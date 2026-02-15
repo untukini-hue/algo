@@ -4,18 +4,18 @@
 import os
 
 #KONSTANTA
-MAKSDATA = 100
+MAKSDATA = 30
 
 #subrutin menampilkan data Rekam Medis dalam bentuk tabel
-def TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Tanggal):
     os.system('cls')
-    print('                                                          DAFTAR REKAM MEDIS')
-    print('                                                          ------------------')
-    print('-----------------------------------------------------------------------------------------------------')
-    print('|  No  |      Nama Pasien      | Jenis Kelamin |     Keluhan     | Tekanan Darah | Suhu |  Tanggal  |')
-    print('-----------------------------------------------------------------------------------------------------')
+    print('                                                 DAFTAR REKAM MEDIS')
+    print('                                                 ------------------')
+    print('----------------------------------------------------------------------------------------------')
+    print('|  No  |      Nama Pasien      | Jenis Kelamin |     Keluhan     | Tekanan Darah |  Tanggal  |')
+    print('-----------------------------------------------------------------------------------------------')
     for i in range(N):
-        print(f'| {i+1:>4} | {Nama[i]:>21} | {JK[i]:>13} | {Keluhan[i]:>15} | {TD[i]:^13} | {Suhu[i]:^4} | {Tanggal[i]:^10} |')
+        print(f'| {i+1:>4} | {Nama[i]:>21} | {JK[i]:>13} | {Keluhan[i]:>15} | {TD[i]:^13} | {Tanggal[i]:^10} |')
     print('-----------------------------------------------------------------------------------------------------')
     
 #subrutin menu pilihan
@@ -41,28 +41,26 @@ def MenuUrut(Menu2):
     print("2. Jenis Kelamin")
     print("3. Keluhan")
     print("4. Tekanan Darah")
-    print("5. Suhu")
-    print("6. Tanggal")
+    print("5. Tanggal")
     print("0. Keluar")
     Menu2 = int(input("Apa yang akan diurutkan? "))
     return Menu2
  
 #subrutin menu untuk memilih metode urut
 def MenuMetode(Menu3):
-    os.system('cls')
     print("<<MENU METODE URUT>>")
     print("1. Bubble Sort Ascending")
-    print("1. Bubble Sort Decending")
-    print("1. Maximum Sort Ascending")
-    print("1. Maximum Sort Decending")
-    print("1. Minimum Sort Ascending")
-    print("1. Minimum Sort Decending")
+    print("2. Bubble Sort Decending")
+    print("3. Maximum Sort Ascending")
+    print("4. Maximum Sort Decending")
+    print("5. Minimum Sort Ascending")
+    print("6. Minimum Sort Decending")
     print("0. Keluar")
     Menu3 = int(input("Menggunakan Metode Apa? "))
     return Menu3
 
 #subrutin mengisi data rekam medis   
-def IsiLarik(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def IsiLarik(N ,Nama, JK, Keluhan, TD, Tanggal):
     os.system('cls')
     print("<<PENGISIAN DATA REKAM MEDIS>>")
     print("------------------------------")
@@ -74,12 +72,11 @@ def IsiLarik(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
             JK[i] = str(input("Jenis Kelamin         : ")).upper()
             Keluhan[i] = str(input("Keluhan Pasien        : ")).upper()
             TD[i] = str(input("Tekanan Darah (../..) : ")).upper()
-            Suhu[i] = str(input("Suhu                  : ")).upper()
             Tanggal[i] = str(input("Tanggal               : ")).upper()
         return N
 
 #subrutin menambah data rekam medis
-def TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def TambahData(N ,Nama, JK, Keluhan, TD, Tanggal):
     os.system('cls')
     print("<<PENAMMBAHAN DATA REKAM MEDIS>>")
     print("--------------------------------")
@@ -89,7 +86,6 @@ def TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         JK[N] = str(input("Jenis Kelamin         : ")).upper()
         Keluhan[N] = str(input("Keluhan Pasien        : ")).upper()
         TD[N] = str(input("Tekanan Darah (../..) : ")).upper()
-        Suhu[N] = str(input("Suhu                  : ")).upper()
         Tanggal[N] = str(input("Tanggal               : ")).upper()
         N = N + 1
         return N
@@ -97,7 +93,7 @@ def TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         "Isi Data Rekam Medis Terlebih Dahulu"
     
 #subrutin hapus data rekam medis
-def HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def HapusData(N ,Nama, JK, Keluhan, TD, Tanggal):
     os.system('cls')
     print("<<PENGHAPUSAN DATA REKAM MEDIS>>")
     print("--------------------------------")
@@ -109,7 +105,6 @@ def HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 JK[i-1] = JK[i]
                 Keluhan[i-1] = Keluhan[i]
                 TD[i-1] = TD[i]
-                Suhu[i-1] = Suhu[i]
                 Tanggal[i-1] = Tanggal[i]
             Nama[N-1] = 0
             N = N - 1
@@ -120,8 +115,7 @@ def HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         print("Data Kosong")
                 
 #subrutin metode urut bubble sort ascending
-def BubbleAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleAscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
             if (Nama[j] < Nama[j-1]):
@@ -145,18 +139,12 @@ def BubbleAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
  
-def BubbleAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleAscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
             if (JK[j] < JK[j-1]):
@@ -180,18 +168,12 @@ def BubbleAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
                
-def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
             if (Keluhan[j] < Keluhan[j-1]):
@@ -215,18 +197,12 @@ def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
 
-def BubbleAscTD(N, Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
+def BubbleAscTD(N, Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
             if (TD[j] < TD[j-1]):
@@ -250,53 +226,13 @@ def BubbleAscTD(N, Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp        
                 
-def BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-1, i-1, -1):
-            if (Suhu[j] < Suhu[j-1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j-1]
-                Nama[j-1] = Temp
-                
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j-1]
-                Keluhan[j-1] = Temp
-                
-                #Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j-1]
-                JK[j-1] = Temp
+def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
 
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j-1]
-                TD[j-1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
-
-def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
             if (Tanggal[j] < Tanggal[j-1]):
@@ -320,19 +256,14 @@ def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
 
 #subrutin metode urut bubble sort decending
-def BubbleDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleDscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
+
     for i in range(1, N):
         for j in range(N-i):
             if (Nama[j] < Nama[j+1]):
@@ -361,18 +292,13 @@ def BubbleDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
-def BubbleDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleDscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
+
     for i in range(1, N):
         for j in range(N-i):
             if (JK[j] < JK[j+1]):
@@ -401,18 +327,13 @@ def BubbleDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
-def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
+
     for i in range(1, N):
         for j in range(N-i):
             if (Keluhan[j] < Keluhan[j+1]):
@@ -436,18 +357,13 @@ def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
-def BubbleDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleDscTD(N ,Nama, JK, Keluhan, TD, Tanggal):
+
     for i in range(1, N):
         for j in range(N-i):
             if (TD[j] < TD[j+1]):
@@ -471,18 +387,13 @@ def BubbleDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
-def BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+
+
     for i in range(1, N):
         for j in range(N-i):
             if (Suhu[j] < Suhu[j+1]):
@@ -506,18 +417,13 @@ def BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
-def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    os.system('cls')
+def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
+
     for i in range(1, N):
         for j in range(N-i):
             if (Tanggal[j] < Tanggal[j+1]):
@@ -541,18 +447,13 @@ def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
 
 #subrutin metode urut maximum sort ascending
-def MaxAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxAscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -584,17 +485,12 @@ def MaxAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
         
-def MaxAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxAscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -621,17 +517,12 @@ def MaxAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
         
-def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -658,17 +549,12 @@ def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxAscTD(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -695,54 +581,12 @@ def MaxAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    for i in range(1,N):
-        max = 0
-        for j in range(1,N+1-i):
-            if (Suhu[j] > Suhu[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-
-def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -769,18 +613,13 @@ def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
 #subrutin metode urut maximum sort decending
-def MaxDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxDscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -808,17 +647,12 @@ def MaxDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxDscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -845,17 +679,12 @@ def MaxDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -882,17 +711,12 @@ def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxDscTD(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -919,54 +743,12 @@ def MaxDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
-def MaxDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    for i in range(1,N):
-        max = i
-        for j in range(1,N+1-i):
-            if (Suhu[j] > Suhu[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-
-def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -993,18 +775,13 @@ def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
 
 #subrutin metode urut minimum sort ascending
-def MinAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinAscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -1026,17 +803,12 @@ def MinAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp    
 
-def MinAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinAscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -1063,17 +835,12 @@ def MinAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp    
 
-def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -1100,17 +867,12 @@ def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp    
 
-def MinAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinAscTD(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -1137,54 +899,12 @@ def MinAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp    
 
-def MinAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    for i in range(1,N):
-        min = i
-        for j in range(1,N+1-i):
-            if (Suhu[j] < Suhu[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[min]
-        JK[min] = Temp        
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp    
-
-def MinAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -1211,18 +931,13 @@ def MinAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp    
 
 #subrutin metode urut minimum sort decending
-def MinDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinDscNama(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -1249,17 +964,12 @@ def MinDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
 
-def MinDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinDscJK(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -1286,17 +996,12 @@ def MinDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
 
-def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -1323,17 +1028,12 @@ def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
 
-def MinDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinDscTD(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -1360,54 +1060,12 @@ def MinDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
 
-def MinDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
-    for i in range(1,N):
-        min = 0
-        for j in range(1,N+1-i):
-            if (Suhu[j] < Suhu[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[min]
-        JK[min] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-
-def MinDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+def MinDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -1434,11 +1092,6 @@ def MinDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
@@ -1451,7 +1104,6 @@ Nama = ['/'] * MAKSDATA
 JK = ['/'] * MAKSDATA
 Keluhan = ['/'] * MAKSDATA
 TD = ['/'] * MAKSDATA
-Suhu = ['/'] * MAKSDATA
 Tanggal = ['/'] * MAKSDATA
 
 os.system('cls')
@@ -1462,18 +1114,18 @@ while (Menu != 0):
     os.system('cls')
     match (Menu):
         case 1: #Isi Data
-            N = IsiLarik(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+            N = IsiLarik(N ,Nama, JK, Keluhan, TD, Tanggal)
         case 2: #Tampil Data
             if (N > 0):
-                TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Tanggal)
             else:
                 print("Isi Data Rekam Medis Terlebih Dahulu")
             print()
             os.system('pause')
         case 3: #Tambah Data
-            N = TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+            N = TambahData(N ,Nama, JK, Keluhan, TD, Tanggal)
         case 4: #Hapus Data
-            N = HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+            N = HapusData(N ,Nama, JK, Keluhan, TD, Tanggal)
         case 5: #Urut Data
             Menu2 = 0
             Menu2 = MenuUrut(Menu2)
@@ -1485,102 +1137,85 @@ while (Menu != 0):
                         while (Menu3 != 0):
                             match (Menu3):
                                 case 1: #Bubble Sort Ascending
-                                    BubbleAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleAscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 2: #Bubble Sort Decending
-                                    BubbleDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleDscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 3: #Maximum Sort Ascending
-                                    MaxAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxAscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 4: #Maximum Sort Decending
-                                    MaxDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxDscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 5: #Minimum Sort Ascending
-                                    MinAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinAscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 6: #Minimum Sort Decending
-                                    MinDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinDscNama(N ,Nama, JK, Keluhan, TD, Tanggal)
                     case 2: #urut Jenis Kelamin
                         Menu3 = 0
                         Menu3 = MenuMetode(Menu3)
                         while (Menu3 != 0):
                             match (Menu3):
                                 case 1: #Bubble Sort Ascending
-                                    BubbleAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleAscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 2: #Bubble Sort Decending
-                                    BubbleDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleDscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 3: #Maximum Sort Ascending
-                                    MaxAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxAscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 4: #Maximum Sort Decending
-                                    MaxDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxDscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 5: #Minimum Sort Ascending
-                                    MinAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinAscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 6: #Minimum Sort Decending
-                                    MinDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinDscJK(N ,Nama, JK, Keluhan, TD, Tanggal)
                     case 3: #urut Keluhan
                         Menu3 = 0
                         Menu3 = MenuMetode(Menu3)
                         while (Menu3 != 0):
                             match (Menu3):
                                 case 1: #Bubble Sort Ascending
-                                    BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 2: #Bubble Sort Decending
-                                    BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 3: #Maximum Sort Ascending
-                                    MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 4: #Maximum Sort Decending
-                                    MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 5: #Minimum Sort Ascending
-                                    MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 6: #Minimum Sort Decending
-                                    MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Tanggal)
                     case 4: #urut TD
                         Menu3 = 0
                         Menu3 = MenuMetode(Menu3)
                         while (Menu3 != 0):
                             match (Menu3):
                                 case 1: #Bubble Sort Ascending
-                                    BubbleAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleAscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 2: #Bubble Sort Decending
-                                    BubbleDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleDscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 3: #Maximum Sort Ascending
-                                    MaxAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxAscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 4: #Maximum Sort Decending
-                                    MaxDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxDscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 5: #Minimum Sort Ascending
-                                    MinAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinAscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 6: #Minimum Sort Decending
-                                    MinDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                    case 5: #urut Suhu
+                                    MinDscTD(N ,Nama, JK, Keluhan, TD, Tanggal)
+                    case 5: #urut Tanggal
                         Menu3 = 0
                         Menu3 = MenuMetode(Menu3)
                         while (Menu3 != 0):
                             match (Menu3):
                                 case 1: #Bubble Sort Ascending
-                                    BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 2: #Bubble Sort Decending
-                                    BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 3: #Maximum Sort Ascending
-                                    MaxAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 4: #Maximum Sort Decending
-                                    MaxDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 5: #Minimum Sort Ascending
-                                    MinAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinAscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                 case 6: #Minimum Sort Decending
-                                    MinDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                    case 7: #urut Tanggal
-                        Menu3 = 0
-                        Menu3 = MenuMetode(Menu3)
-                        while (Menu3 != 0):
-                            match (Menu3):
-                                case 1: #Bubble Sort Ascending
-                                    BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                                case 2: #Bubble Sort Decending
-                                    BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                                case 3: #Maximum Sort Ascending
-                                    MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                                case 4: #Maximum Sort Decending
-                                    MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                                case 5: #Minimum Sort Ascending
-                                    MinAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
-                                case 6: #Minimum Sort Decending
-                                    MinDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                    MinDscTanggal(N ,Nama, JK, Keluhan, TD, Tanggal)
                                         
     
     
