@@ -7,16 +7,16 @@ import os
 MAKSDATA = 100
 
 #subrutin menampilkan data Rekam Medis dalam bentuk tabel
-def TampilRekamMedis(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
-    print('                                             DAFTAR REKAM MEDIS')
-    print('                                             ------------------')
-    print('------------------------------------------------------------------------------------------------------------------------------------------------')
-    print('|  No  |      Nama Pasien      | Jenis Kelamin |     Keluhan     | Tekanan Darah | Denyut Nadi | Suhu | Saturasi Oksigen | Tanggal\Bulan\Tahun |')
-    print('------------------------------------------------------------------------------------------------------------------------------------------------')
+    print('                                                          DAFTAR REKAM MEDIS')
+    print('                                                          ------------------')
+    print('-----------------------------------------------------------------------------------------------------')
+    print('|  No  |      Nama Pasien      | Jenis Kelamin |     Keluhan     | Tekanan Darah | Suhu |  Tanggal  |')
+    print('-----------------------------------------------------------------------------------------------------')
     for i in range(N):
-        print(f'| {i+1:>4} | {Nama[i]:>21} | {JK[i]:>10} | {Keluhan[i]:>15} | {TD[i]:^13} | {DN[i]:^11} | {Suhu[i]:^4} | {SO[i]:^16} | {Tanggal[i]:7}\{Bulan[i]:5}\{Tahun[i]:5} |')
-    print('------------------------------------------------------------------------------------------------------------------------------------------------')
+        print(f'| {i+1:>4} | {Nama[i]:>21} | {JK[i]:>13} | {Keluhan[i]:>15} | {TD[i]:^13} | {Suhu[i]:^4} | {Tanggal[i]:^10} |')
+    print('-----------------------------------------------------------------------------------------------------')
     
 #subrutin menu pilihan
 def MenuPilihan(Menu):
@@ -32,26 +32,37 @@ def MenuPilihan(Menu):
     print("0. Keluar")
     Menu = int(input("Pilihan Anda? "))
     return Menu
- 
+
+#subrutin menu untuk memilih apa yang akan diurutkan
 def MenuUrut(Menu2):
     os.system('cls')
-    print("<<MENU PILIHAN>>")
+    print("<<MENU>>")
     print("1. Nama")
-    print("2. Jeni Kelami")
+    print("2. Jenis Kelamin")
     print("3. Keluhan")
     print("4. Tekanan Darah")
-    print("5. Denyut Nadi")
-    print("6. Suhu")
-    print("7. Saturasi Oksigen")
-    print("8. Tanggal")
-    print("9. Bulan")
-    
+    print("5. Suhu")
+    print("6. Tanggal")
     print("0. Keluar")
-    Menu2 = int(input("Pilihan Anda? "))
+    Menu2 = int(input("Apa yang akan diurutkan? "))
     return Menu2
  
+#subrutin menu untuk memilih metode urut
+def MenuMetode(Menu3):
+    os.system('cls')
+    print("<<MENU METODE URUT>>")
+    print("1. Bubble Sort Ascending")
+    print("1. Bubble Sort Decending")
+    print("1. Maximum Sort Ascending")
+    print("1. Maximum Sort Decending")
+    print("1. Minimum Sort Ascending")
+    print("1. Minimum Sort Decending")
+    print("0. Keluar")
+    Menu3 = int(input("Menggunakan Metode Apa? "))
+    return Menu3
+
 #subrutin mengisi data rekam medis   
-def IsiLarik(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def IsiLarik(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     print("<<PENGISIAN DATA REKAM MEDIS>>")
     print("------------------------------")
@@ -63,16 +74,12 @@ def IsiLarik(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
             JK[i] = str(input("Jenis Kelamin         : ")).upper()
             Keluhan[i] = str(input("Keluhan Pasien        : ")).upper()
             TD[i] = str(input("Tekanan Darah (../..) : ")).upper()
-            DN[i] = str(input("Denyut Nadi           : ")).upper()
             Suhu[i] = str(input("Suhu                  : ")).upper()
-            SO[i] = str(input("Saturasi Oksigen (%)  : ")).upper()
             Tanggal[i] = str(input("Tanggal               : ")).upper()
-            Bulan[i] = str(input("Bulan                 : ")).upper()
-            Tahun[i] = str(input("Tahun                 : ")).upper()
         return N
 
 #subrutin menambah data rekam medis
-def TambahData(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     print("<<PENAMMBAHAN DATA REKAM MEDIS>>")
     print("--------------------------------")
@@ -82,19 +89,15 @@ def TambahData(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         JK[N] = str(input("Jenis Kelamin         : ")).upper()
         Keluhan[N] = str(input("Keluhan Pasien        : ")).upper()
         TD[N] = str(input("Tekanan Darah (../..) : ")).upper()
-        DN[N] = str(input("Denyut Nadi           : ")).upper()
         Suhu[N] = str(input("Suhu                  : ")).upper()
-        SO[N] = str(input("Saturasi Oksigen (%)  : ")).upper()
         Tanggal[N] = str(input("Tanggal               : ")).upper()
-        Bulan[N] = str(input("Bulan                 : ")).upper()
-        Tahun[N] = str(input("Tahun                 : ")).upper()
         N = N + 1
         return N
     else:
         "Isi Data Rekam Medis Terlebih Dahulu"
     
 #subrutin hapus data rekam medis
-def HapusData(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     print("<<PENGHAPUSAN DATA REKAM MEDIS>>")
     print("--------------------------------")
@@ -106,12 +109,8 @@ def HapusData(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
                 JK[i-1] = JK[i]
                 Keluhan[i-1] = Keluhan[i]
                 TD[i-1] = TD[i]
-                DN[i-1] = DN[i]
                 Suhu[i-1] = Suhu[i]
-                SO[i-1] = SO[i]
                 Tanggal[i-1] = Tanggal[i]
-                Bulan[i-1] = Bulan[i]
-                Tahun[i-1] = Tahun[i]
             Nama[N-1] = 0
             N = N - 1
             return N
@@ -121,7 +120,7 @@ def HapusData(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         print("Data Kosong")
                 
 #subrutin metode urut bubble sort ascending
-def BubbleAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
@@ -146,37 +145,52 @@ def BubbleAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
+                #Tukar Suhu
+                Temp = Suhu[j]
+                Suhu[j] = Suhu[j-1]
+                Suhu[j-1] = Temp
+                
+                #Tukar Tanggal
+                Temp = Tanggal[j]
+                Tanggal[j] = Tanggal[j-1]
+                Tanggal[j-1] = Temp
+ 
+def BubbleAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+    os.system('cls')
+    for i in range(1, N):
+        for j in range(N-1, i-1, -1):
+            if (JK[j] < JK[j-1]):
+                # Tukar Nama
+                Temp = Nama[j]
+                Nama[j] = Nama[j-1]
+                Nama[j-1] = Temp
+                
+                #Tukar JK
+                Temp = JK[j]
+                JK[j] = JK[j-1]
+                JK[j-1] = Temp
+                
+                #Tukar Keluhan
+                Temp = Keluhan[j]
+                Keluhan[j] = Keluhan[j-1]
+                Keluhan[j-1] = Temp
+                
+                #Tukar TD
+                Temp = TD[j]
+                TD[j] = TD[j-1]
+                TD[j-1] = Temp
                 
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j-1]
                 Suhu[j-1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-                
-def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+               
+def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
@@ -201,35 +215,15 @@ def BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tah
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j-1]
                 Suhu[j-1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
 
 def BubbleAscTD(N, Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
     os.system('cls')
@@ -256,92 +250,17 @@ def BubbleAscTD(N, Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j-1]
                 Suhu[j-1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
+                Tanggal[j-1] = Temp        
                 
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-                
-def BubbleAscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-1, i-1, -1):
-            if (DN[j] < DN[j-1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j-1]
-                Nama[j-1] = Temp
-                
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j-1]
-                Keluhan[j-1] = Temp
-                
-                #Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j-1]
-                JK[j-1] = Temp
-
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j-1]
-                TD[j-1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-                
-def BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
@@ -366,92 +285,17 @@ def BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j-1]
                 Suhu[j-1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
 
-def BubbleAscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-1, i-1, -1):
-            if (SO[j] < SO[j-1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j-1]
-                Nama[j-1] = Temp
-                
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j-1]
-                Keluhan[j-1] = Temp
-                
-                #Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j-1]
-                JK[j-1] = Temp
-
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j-1]
-                TD[j-1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-
-def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-1, i-1, -1):
@@ -476,148 +320,18 @@ def BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tah
                 TD[j] = TD[j-1]
                 TD[j-1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j-1]
                 Suhu[j-1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j-1]
                 Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-
-def BubbleAscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-1, i-1, -1):
-            if (Bulan[j] < Bulan[j-1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j-1]
-                Nama[j-1] = Temp
-                
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j-1]
-                Keluhan[j-1] = Temp
-                
-                #Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j-1]
-                JK[j-1] = Temp
-
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j-1]
-                TD[j-1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
-
-def BubbleAscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-1, i-1, -1):
-            if (Tahun[j] < Tahun[j-1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j-1]
-                Nama[j-1] = Temp
-                
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j-1]
-                Keluhan[j-1] = Temp
-                
-                #Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j-1]
-                JK[j-1] = Temp
-
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j-1]
-                TD[j-1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j-1]
-                DN[j-1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j-1]
-                Suhu[j-1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j-1]
-                SO[j-1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j-1]
-                Tanggal[j-1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j-1]
-                Bulan[j-1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j-1]
-                Tahun[j-1] = Temp
 
 #subrutin metode urut bubble sort decending
-def BubbleDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-i):
@@ -647,37 +361,57 @@ def BubbleDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
+                #Tukar Suhu
+                Temp = Suhu[j]
+                Suhu[j] = Suhu[j+1]
+                Suhu[j+1] = Temp
+                
+                #Tukar Tanggal
+                Temp = Tanggal[j]
+                Tanggal[j] = Tanggal[j+1]
+                Tanggal[j+1] = Temp
+
+def BubbleDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
+    os.system('cls')
+    for i in range(1, N):
+        for j in range(N-i):
+            if (JK[j] < JK[j+1]):
+                # Tukar Nama
+                Temp = Nama[j]
+                Nama[j] = Nama[j+1]
+                Nama[j+1] = Temp
+                
+                # Tukar JK
+                Temp = JK[j]
+                JK[j] = JK[j+1]
+                JK[j+1] = Temp
+                
+                # Tukar JK
+                Temp = JK[j]
+                JK[j] = JK[j+1]
+                JK[j+1] = Temp
+
+                #Tukar Keluhan
+                Temp = Keluhan[j]
+                Keluhan[j] = Keluhan[j+1]
+                Keluhan[j+1] = Temp
+                
+                #Tukar TD
+                Temp = TD[j]
+                TD[j] = TD[j+1]
+                TD[j+1] = Temp
                 
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j+1]
                 Suhu[j+1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
 
-def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-i):
@@ -702,37 +436,17 @@ def BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tah
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j+1]
                 Suhu[j+1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
 
-def BubbleDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-i):
@@ -757,92 +471,17 @@ def BubbleDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j+1]
                 Suhu[j+1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
 
-def BubbleDscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-i):
-            if (DN[j] < DN[j+1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j+1]
-                Nama[j+1] = Temp
-                
-                # Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j+1]
-                JK[j+1] = Temp
-
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j+1]
-                Keluhan[j+1] = Temp
-                
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j+1]
-                TD[j+1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j+1]
-                Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
-
-def BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-i):
@@ -867,92 +506,17 @@ def BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j+1]
                 Suhu[j+1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
 
-def BubbleDscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-i):
-            if (SO[j] < SO[j+1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j+1]
-                Nama[j+1] = Temp
-                
-                # Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j+1]
-                JK[j+1] = Temp
-
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j+1]
-                Keluhan[j+1] = Temp
-                
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j+1]
-                TD[j+1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j+1]
-                Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
-
-def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     os.system('cls')
     for i in range(1, N):
         for j in range(N-i):
@@ -977,148 +541,18 @@ def BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tah
                 TD[j] = TD[j+1]
                 TD[j+1] = Temp
                 
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
                 #Tukar Suhu
                 Temp = Suhu[j]
                 Suhu[j] = Suhu[j+1]
                 Suhu[j+1] = Temp
                 
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
                 #Tukar Tanggal
                 Temp = Tanggal[j]
                 Tanggal[j] = Tanggal[j+1]
                 Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
-
-def BubbleDscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-i):
-            if (Bulan[j] < Bulan[j+1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j+1]
-                Nama[j+1] = Temp
-                
-                # Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j+1]
-                JK[j+1] = Temp
-
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j+1]
-                Keluhan[j+1] = Temp
-                
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j+1]
-                TD[j+1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j+1]
-                Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
-
-def BubbleDscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    os.system('cls')
-    for i in range(1, N):
-        for j in range(N-i):
-            if (Tahun[j] < Tahun[j+1]):
-                # Tukar Nama
-                Temp = Nama[j]
-                Nama[j] = Nama[j+1]
-                Nama[j+1] = Temp
-                
-                # Tukar JK
-                Temp = JK[j]
-                JK[j] = JK[j+1]
-                JK[j+1] = Temp
-
-                #Tukar Keluhan
-                Temp = Keluhan[j]
-                Keluhan[j] = Keluhan[j+1]
-                Keluhan[j+1] = Temp
-                
-                #Tukar TD
-                Temp = TD[j]
-                TD[j] = TD[j+1]
-                TD[j+1] = Temp
-                
-                #Tukar DN
-                Temp = DN[j]
-                DN[j] = DN[j+1]
-                DN[j+1] = Temp
-                
-                #Tukar Suhu
-                Temp = Suhu[j]
-                Suhu[j] = Suhu[j+1]
-                Suhu[j+1] = Temp
-                
-                #Tukar SO
-                Temp = SO[j]
-                SO[j] = SO[j+1]
-                SO[j+1] = Temp
-                
-                #Tukar Tanggal
-                Temp = Tanggal[j]
-                Tanggal[j] = Tanggal[j+1]
-                Tanggal[j+1] = Temp
-                
-                #Tukar Bulan
-                Temp = Bulan[j]
-                Bulan[j] = Bulan[j+1]
-                Bulan[j+1] = Temp
-                
-                #Tukar Tahun
-                Temp = Tahun[j]
-                Tahun[j] = Tahun[j+1]
-                Tahun[j+1] = Temp
 
 #subrutin metode urut maximum sort ascending
-def MaxAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1150,37 +584,17 @@ def MaxAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
         
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
         
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-        
-def MaxAscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1207,37 +621,17 @@ def MaxAscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
         
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
         
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-        
-def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1264,37 +658,17 @@ def MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxAscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1321,94 +695,17 @@ def MaxAscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxAscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = 0
-        for j in range(1,N+1-i):
-            if (DN[j] > DN[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1435,94 +732,17 @@ def MaxAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxAscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = 0
-        for j in range(1,N+1-i):
-            if (SO[j] > SO[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = 0
         for j in range(1,N+1-i):
@@ -1549,152 +769,18 @@ def MaxAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxAscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = 0
-        for j in range(1,N+1-i):
-            if (Bulan[j] > Bulan[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxAscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = 0
-        for j in range(1,N+1-i):
-            if (Tahun[j] > Tahun[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        # Tukar JK
-        Temp = JK[j]
-        JK[j] = JK[max]
-        JK[max] = Temp
-
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
 #subrutin metode urut maximum sort decending
-def MaxDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -1722,37 +808,17 @@ def MaxDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -1779,37 +845,17 @@ def MaxDscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -1821,6 +867,11 @@ def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         Nama[j] = Nama[max]
         Nama[max] = Temp
         
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[max]
+        JK[max] = Temp
+        
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[max]
@@ -1831,37 +882,17 @@ def MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -1873,57 +904,10 @@ def MaxDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[max]
         Nama[max] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxDscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = i
-        for j in range(1,N+1-i):
-            if (DN[j] > DN[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[max]
+        JK[max] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -1935,37 +919,17 @@ def MaxDscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -1977,57 +941,10 @@ def MaxDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[max]
         Nama[max] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxDscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = i
-        for j in range(1,N+1-i):
-            if (SO[j] > SO[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[max]
+        JK[max] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -2039,37 +956,17 @@ def MaxDscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         max = i
         for j in range(1,N+1-i):
@@ -2096,141 +993,18 @@ def MaxDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[max]
         TD[max] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[max]
         Suhu[max] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[max]
         Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 
-def MaxDscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = i
-        for j in range(1,N+1-i):
-            if (Bulan[j] > Bulan[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
-
-def MaxDscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        max = i
-        for j in range(1,N+1-i):
-            if (Tahun[j] > Tahun[max]):
-                max = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[max]
-        Nama[max] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[max]
-        Keluhan[max] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[max]
-        TD[max] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[max]
-        DN[max] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[max]
-        Suhu[max] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[max]
-        SO[max] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[max]
-        Tanggal[max] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[max]
-        Bulan[max] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[max]
-        Tahun[max] = Temp
 #subrutin metode urut minimum sort ascending
-def MinAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -2252,37 +1026,17 @@ def MinAscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
-def MinAscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -2294,8 +1048,11 @@ def MinAscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        
-        
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
+
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2306,37 +1063,17 @@ def MinAscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
-def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -2348,6 +1085,11 @@ def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp        
+        
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2358,48 +1100,33 @@ def MinAscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
-def MinAscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
             if (TD[j] < TD[min]):
                 min = j
-                
+        
         # Tukar Nama
         Temp = Nama[j]
         Nama[j] = Nama[min]
         Nama[min] = Temp
-        
+       
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
+
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2410,89 +1137,17 @@ def MinAscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
-def MinAscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = i
-        for j in range(1,N+1-i):
-            if (DN[j] < DN[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
-
-def MinAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -2504,57 +1159,10 @@ def MinAscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
-
-def MinAscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = i
-        for j in range(1,N+1-i):
-            if (SO[j] < SO[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp        
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -2566,37 +1174,17 @@ def MinAscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
-def MinAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = i
         for j in range(1,N+1-i):
@@ -2608,57 +1196,10 @@ def MinAscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
-
-def MinAscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = i
-        for j in range(1,N+1-i):
-            if (Bulan[j] < Bula[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -2670,90 +1211,18 @@ def MinAscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
-
-def MinAscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = i
-        for j in range(1,N+1-i):
-            if (Tahun[j] < Tahun[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp    
+        Tanggal[min] = Temp    
 
 #subrutin metode urut minimum sort decending
-def MinDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -2765,6 +1234,11 @@ def MinDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
+        
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2775,37 +1249,17 @@ def MinDscNama(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
 
-def MinDscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -2817,6 +1271,11 @@ def MinDscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
+        
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2827,37 +1286,17 @@ def MinDscJK(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
 
-def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -2869,6 +1308,11 @@ def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
+         # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
+        
         #Tukar Keluhan
         Temp = Keluhan[j]
         Keluhan[j] = Keluhan[min]
@@ -2879,37 +1323,17 @@ def MinDscKeluhan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
 
-def MinDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -2921,57 +1345,10 @@ def MinDscTD(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
-
-def MinDscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = 0
-        for j in range(1,N+1-i):
-            if (DN[j] < DN[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -2983,37 +1360,17 @@ def MinDscDN(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
 
-def MinDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -3025,57 +1382,10 @@ def MinDscSuhu(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
-
-def MinDscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = 0
-        for j in range(1,N+1-i):
-            if (SO[j] < SO[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -3087,37 +1397,17 @@ def MinDscSO(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
 
-def MinDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
+def MinDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal):
     for i in range(1,N):
         min = 0
         for j in range(1,N+1-i):
@@ -3129,57 +1419,10 @@ def MinDscTanggal(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
         Nama[j] = Nama[min]
         Nama[min] = Temp
         
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
-
-def MinDscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = 0
-        for j in range(1,N+1-i):
-            if (Bulan[j] < Bulan[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
+        # Tukar JK
+        Temp = JK[j]
+        JK[j] = JK[min]
+        JK[min] = Temp
         
         #Tukar Keluhan
         Temp = Keluhan[j]
@@ -3191,88 +1434,15 @@ def MinDscBulan(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
         TD[j] = TD[min]
         TD[min] = Temp
         
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
         #Tukar Suhu
         Temp = Suhu[j]
         Suhu[j] = Suhu[min]
         Suhu[min] = Temp
         
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
         #Tukar Tanggal
         Temp = Tanggal[j]
         Tanggal[j] = Tanggal[min]
         Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
-
-def MinDscTahun(N ,Nama, JK, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun):
-    for i in range(1,N):
-        min = 0
-        for j in range(1,N+1-i):
-            if (Tahun[j] < Tahun[min]):
-                min = j
-                
-        # Tukar Nama
-        Temp = Nama[j]
-        Nama[j] = Nama[min]
-        Nama[min] = Temp
-        
-        #Tukar Keluhan
-        Temp = Keluhan[j]
-        Keluhan[j] = Keluhan[min]
-        Keluhan[min] = Temp
-        
-        #Tukar TD
-        Temp = TD[j]
-        TD[j] = TD[min]
-        TD[min] = Temp
-        
-        #Tukar DN
-        Temp = DN[j]
-        DN[j] = DN[min]
-        DN[min] = Temp
-        
-        #Tukar Suhu
-        Temp = Suhu[j]
-        Suhu[j] = Suhu[min]
-        Suhu[min] = Temp
-        
-        #Tukar SO
-        Temp = SO[j]
-        SO[j] = SO[min]
-        SO[min] = Temp
-        
-        #Tukar Tanggal
-        Temp = Tanggal[j]
-        Tanggal[j] = Tanggal[min]
-        Tanggal[min] = Temp
-        
-        #Tukar Bulan
-        Temp = Bulan[j]
-        Bulan[j] = Bulan[min]
-        Bulan[min] = Temp
-        
-        #Tukar Tahun
-        Temp = Tahun[j]
-        Tahun[j] = Tahun[min]
-        Tahun[min] = Temp
-
 
 #Badan Program
 #Penciptaan larik nama, jenis kelamin (JK), keluhan, Tekanan Darah (TD), Denyut Nadi (DN), Suhu,
@@ -3281,12 +1451,8 @@ Nama = ['/'] * MAKSDATA
 JK = ['/'] * MAKSDATA
 Keluhan = ['/'] * MAKSDATA
 TD = ['/'] * MAKSDATA
-DN = ['/'] * MAKSDATA
 Suhu = ['/'] * MAKSDATA
-SO = ['/'] * MAKSDATA
 Tanggal = ['/'] * MAKSDATA
-Bulan = ['/'] * MAKSDATA
-Tahun = ['/'] * MAKSDATA
 
 os.system('cls')
 Menu = 0
@@ -3296,20 +1462,127 @@ while (Menu != 0):
     os.system('cls')
     match (Menu):
         case 1: #Isi Data
-            N = IsiLarik(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
+            N = IsiLarik(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
         case 2: #Tampil Data
             if (N > 0):
-                TampilRekamMedis(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
+                TampilRekamMedis(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
             else:
                 print("Isi Data Rekam Medis Terlebih Dahulu")
             print()
             os.system('pause')
         case 3: #Tambah Data
-            N = TambahData(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
+            N = TambahData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
         case 4: #Hapus Data
-            N = HapusData(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
+            N = HapusData(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
         case 5: #Urut Data
-            BubbleAscNama(N ,Nama, Keluhan, TD, DN, Suhu, SO, Tanggal, Bulan, Tahun)
-            
+            Menu2 = 0
+            Menu2 = MenuUrut(Menu2)
+            while (Menu2 != 0):
+                match (Menu2):
+                    case 1: # Urut Nama
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscNama(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                    case 2: #urut Jenis Kelamin
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscJK(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                    case 3: #urut Keluhan
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscKeluhan(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                    case 4: #urut TD
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscTD(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                    case 5: #urut Suhu
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscSuhu(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                    case 7: #urut Tanggal
+                        Menu3 = 0
+                        Menu3 = MenuMetode(Menu3)
+                        while (Menu3 != 0):
+                            match (Menu3):
+                                case 1: #Bubble Sort Ascending
+                                    BubbleAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 2: #Bubble Sort Decending
+                                    BubbleDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 3: #Maximum Sort Ascending
+                                    MaxAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 4: #Maximum Sort Decending
+                                    MaxDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 5: #Minimum Sort Ascending
+                                    MinAscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                case 6: #Minimum Sort Decending
+                                    MinDscTanggal(N ,Nama, JK, Keluhan, TD, Suhu, Tanggal)
+                                        
+    
+    
     os.system('cls')
-    Menu = MenuPilihan(Menu)
+    Menu = MenuPilihan(Menu)   
